@@ -20,6 +20,30 @@ const maxIndex = function(A, i){
   return i
 }
 
-const arr = [4,3,2,1]
-selectionSort(arr)
-console.log(arr);
+// const arr = [4,3,2,1]
+// selectionSort(arr)
+// console.log(arr);
+
+
+/* 
+插入排序
+假定前数组的前 i-1 项已经sorted，然后递归交换最后一项与arr每一项的位置
+*/
+const insertSort = function(arr,i = null){
+  i = i === null ? arr.length - 1 : i
+  if(i > 0){
+    insertSort(arr, i -1)
+    insertLast(arr,i)
+  }
+}
+
+const insertLast = function(arr, i){
+  if(i <= 0) return
+  if(arr[i - 1] > arr[i]){
+    [arr[i - 1], arr[i]] = [arr[i], arr[i - 1]]
+  }
+  insertLast(arr, i-1)
+}
+const arr2 = [4,3,2,1]
+insertSort(arr2)
+console.log(arr2);
